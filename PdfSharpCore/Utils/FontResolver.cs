@@ -3,6 +3,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
+using System;
 
 using PdfSharpCore.Internal;
 using PdfSharpCore.Drawing;
@@ -33,8 +34,7 @@ namespace PdfSharpCore.Utils
             string fontDir;
 
             // bool isOSX = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
-            // bool isOSX = OperatingSystem.IsIOS();
-            bool isOSX = RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.OSDescription.Contains("Darwin");
+            bool isOSX = OperatingSystem.IsIOS();
 
             if (isOSX)
             {

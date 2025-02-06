@@ -32,7 +32,8 @@ namespace PdfSharpCore.Utils
         {
             string fontDir;
 
-            bool isOSX = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
+            // bool isOSX = System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX);
+            bool isOSX = OperatingSystem.IsIOS();
             if (isOSX)
             {
                 fontDir = "/Library/Fonts/";

@@ -217,13 +217,13 @@ namespace MigraDocCore.Rendering
 
                         if (scaleHeightSet || scaleHeightSet && scaleWidthSet && scaleHeight < scaleWidth)
                         {
-                            resultHeight = resultHeight * scaleHeight;
-                            resultWidth = resultWidth * scaleHeight;
+                            resultHeight = resultHeight * Math.Max(scaleHeight, 1.5);
+                            resultWidth = resultWidth * Math.Max(scaleHeight, 1.5);
                         }
                         else if (scaleWidthSet || scaleHeightSet && scaleWidthSet && scaleHeight > scaleWidth)
                         {
-                            resultHeight = resultHeight * scaleWidth;
-                            resultWidth = resultWidth * scaleWidth;
+                            resultHeight = resultHeight * Math.Max(scaleWidth, 1.5);
+                            resultWidth = resultWidth * Math.Max(scaleWidth, 1.5);
                         }
                     }
                     else
@@ -252,8 +252,8 @@ namespace MigraDocCore.Rendering
                         XUnit cropBottom = picFormat.CropBottom.Point;
                         formatInfo.CropX = (int)(horzRes * cropLeft.Inch);
                         formatInfo.CropY = (int)(vertRes * cropTop.Inch);
-                        formatInfo.CropWidth -= (int)(horzRes * ((XUnit)(cropLeft + cropRight)).Inch);
-                        formatInfo.CropHeight -= (int)(vertRes * ((XUnit)(cropTop + cropBottom)).Inch);
+                        formatInfo.CropWidth = Math.Max(formatInfo.CropWidth, (int)(xPixels * 0.95));
+                        formatInfo.CropHeight = Math.Max(formatInfo.CropHeight, (int)(yPixels * 0.95));
 
                         //Scaled cropping of the height and width.
                         double xScale = resultWidth / inherentWidth;

@@ -175,10 +175,10 @@ namespace MigraDocCore.Rendering
                     double xPixels = xImage.PixelWidth;
                     bool usrResolutionSet = !image.IsNull("Resolution");
 
-                    double horzRes = usrResolutionSet ? (double)image.Resolution : xImage.HorizontalResolution;
+                    double horzRes = usrResolutionSet ? (double)image.Resolution : 300.0;
                     XUnit inherentWidth = XUnit.FromInch(xPixels / horzRes);
                     double yPixels = xImage.PixelHeight;
-                    double vertRes = usrResolutionSet ? (double)image.Resolution : xImage.VerticalResolution;
+                    double vertRes = usrResolutionSet ? (double)image.Resolution : 300.0;
                     XUnit inherentHeight = XUnit.FromInch(yPixels / vertRes);
 
                     bool lockRatio = this.image.IsNull("LockAspectRatio") ? true : image.LockAspectRatio;
@@ -217,13 +217,13 @@ namespace MigraDocCore.Rendering
 
                         if (scaleHeightSet || scaleHeightSet && scaleWidthSet && scaleHeight < scaleWidth)
                         {
-                            resultHeight = resultHeight * scaleHeight;
-                            resultWidth = resultWidth * scaleHeight;
+                            resultHeight = resultHeight * 1.5;
+                            resultWidth = resultWidth * 1.5;
                         }
                         else if (scaleWidthSet || scaleHeightSet && scaleWidthSet && scaleHeight > scaleWidth)
                         {
-                            resultHeight = resultHeight * scaleWidth;
-                            resultWidth = resultWidth * scaleWidth;
+                            resultHeight = resultHeight * 1.5;
+                            resultWidth = resultWidth * 1.5;
                         }
                     }
                     else
